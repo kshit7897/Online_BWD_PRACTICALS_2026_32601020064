@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Tech Fest 2026</title>
+</head>
+<body>
+
+    <div>
+        <h1>Tech Fest 2026 &ndash; Registration</h1>
+        <p><a href="index.html">&larr; Back to Event Details</a></p>
+
+        <form action="#" method="post">
+            <p>
+                <label for="name">Participant Name:</label><br>
+                <input type="text" id="name" name="name" required>
+            </p>
+            <p>
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" required>
+            </p>
+            <p>
+                <label for="phone">Mobile Number:</label><br>
+                <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>
+            </p>
+            <p>
+                <label for="event">Competition:</label><br>
+                <select id="event" name="event" required>
+                    <option value="">-- Select --</option>
+                    <option>Coding Contest</option>
+                    <option>Web Design</option>
+                    <option>Robotics</option>
+                    <option>AI Quiz</option>
+                </select>
+            </p>
+            <p>
+                <label for="members">Team Members:</label><br>
+                <input type="number" id="members" name="members" min="1" max="3" value="1">
+            </p>
+            <p>
+                <input type="submit" value="Register">
+                <input type="reset" value="Clear">
+            </p>
+        </form>
+    </div>
+
+</body>
+</html>

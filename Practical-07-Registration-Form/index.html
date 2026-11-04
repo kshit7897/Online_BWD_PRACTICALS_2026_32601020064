@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form</title>
+</head>
+<body>
+
+    <h1>Student Registration Form</h1>
+    <p>Fields marked with * are required.</p>
+
+    <form action="#" method="post">
+
+        <fieldset>
+            <legend><b>Account Details</b></legend>
+
+            <p>
+                <label for="name">Full Name *</label><br>
+                <input type="text" id="name" name="name" placeholder="e.g. Parikshit Chauhan"
+                       minlength="3" maxlength="50" required autofocus>
+            </p>
+
+            <p>
+                <label for="email">Email *</label><br>
+                <input type="email" id="email" name="email" placeholder="yourname@gmail.com" required>
+            </p>
+
+            <p>
+                <label for="password">Password *</label><br>
+                <input type="password" id="password" name="password" minlength="8"
+                       placeholder="Minimum 8 characters" required>
+            </p>
+
+            <p>
+                <label for="phone">Mobile Number</label><br>
+                <input type="tel" id="phone" name="phone" pattern="[0-9]{10}"
+                       placeholder="10 digit mobile number">
+            </p>
+        </fieldset>
+
+        <br>
+
+        <fieldset>
+            <legend><b>Personal Details</b></legend>
+
+            <p>
+                Gender *<br>
+                <input type="radio" id="male" name="gender" value="male" required>
+                <label for="male">Male</label>
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="female">Female</label>
+                <input type="radio" id="other" name="gender" value="other">
+                <label for="other">Other</label>
+            </p>
+
+            <p>
+                <label for="dob">Date of Birth *</label><br>
+                <input type="date" id="dob" name="dob" min="1990-01-01" max="2012-12-31" required>
+            </p>
+
+            <p>
+                <label for="city">City *</label><br>
+                <select id="city" name="city" required>
+                    <option value="">-- Select City --</option>
+                    <option value="rajkot">Rajkot</option>
+                    <option value="ahmedabad">Ahmedabad</option>
+                    <option value="surat">Surat</option>
+                    <option value="vadodara">Vadodara</option>
+                    <option value="jamnagar">Jamnagar</option>
+                    <option value="bhavnagar">Bhavnagar</option>
+                </select>
+            </p>
+
+            <p>
+                <label for="address">Address</label><br>
+                <textarea id="address" name="address" rows="4" cols="40"
+                          placeholder="Enter your full address"></textarea>
+            </p>
+        </fieldset>
+
+        <br>
+
+        <fieldset>
+            <legend><b>Academic Details</b></legend>
+
+            <p>
+                <label for="course">Course *</label><br>
+                <select id="course" name="course" required>
+                    <option value="">-- Select Course --</option>
+                    <optgroup label="Undergraduate">
+                        <option value="bca">BCA</option>
+                        <option value="bsc-it">B.Sc. IT</option>
+                        <option value="btech">B.Tech</option>
+                    </optgroup>
+                    <optgroup label="Postgraduate">
+                        <option value="mca">MCA</option>
+                        <option value="msc-it">M.Sc. IT</option>
+                    </optgroup>
+                </select>
+            </p>
+
+            <p>
+                Hobbies<br>
+                <input type="checkbox" id="h1" name="hobbies" value="reading">
+                <label for="h1">Reading</label>
+                <input type="checkbox" id="h2" name="hobbies" value="sports">
+                <label for="h2">Sports</label>
+                <input type="checkbox" id="h3" name="hobbies" value="music">
+                <label for="h3">Music</label>
+                <input type="checkbox" id="h4" name="hobbies" value="coding">
+                <label for="h4">Coding</label>
+                <input type="checkbox" id="h5" name="hobbies" value="painting">
+                <label for="h5">Painting</label>
+            </p>
+
+            <p>
+                <label for="marks">12<sup>th</sup> Percentage</label><br>
+                <input type="number" id="marks" name="marks" min="0" max="100" step="0.01">
+            </p>
+
+            <p>
+                <label for="photo">Upload Photo</label><br>
+                <input type="file" id="photo" name="photo" accept="image/*">
+            </p>
+
+            <p>
+                <label for="website">Portfolio / GitHub URL</label><br>
+                <input type="url" id="website" name="website" placeholder="https://github.com/username">
+            </p>
+        </fieldset>
+
+        <p>
+            <input type="checkbox" id="agree" name="agree" required>
+            <label for="agree">I agree that the above information is correct. *</label>
+        </p>
+
+        <p>
+            <input type="submit" value="Register">
+            <input type="reset" value="Reset">
+        </p>
+
+    </form>
+
+</body>
+</html>

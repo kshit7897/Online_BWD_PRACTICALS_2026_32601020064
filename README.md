@@ -13,6 +13,10 @@ New practicals are added to this list as they are completed.
 | 1 | Personal Introduction Page | [Practical-01-Personal-Introduction](Practical-01-Personal-Introduction/) | Headings, paragraphs, text formatting, special characters |
 | 2 | College Department Page | [Practical-02-College-Department](Practical-02-College-Department/) | Ordered and unordered lists, nested lists |
 | 3 | Technical Event Page | [Practical-03-Technical-Event](Practical-03-Technical-Event/) | Image as hyperlink, registration page |
+| 4 | Semester Subjects List | [Practical-04-Semester-Subjects](Practical-04-Semester-Subjects/) | Nested ordered lists, internal links |
+| 5 | Multi-section Student Profile | [Practical-05-Student-Profile](Practical-05-Student-Profile/) | Sections, internal navigation links |
+| 6 | Student Marks Table | [Practical-06-Marks-Table](Practical-06-Marks-Table/) | Table, rowspan, colspan, caption, table attributes |
+| 7 | HTML5 Registration Form | [Practical-07-Registration-Form](Practical-07-Registration-Form/) | HTML5 input types, form controls |
 
 ## Technologies
 HTML5, CSS3, Bootstrap 5, JavaScript

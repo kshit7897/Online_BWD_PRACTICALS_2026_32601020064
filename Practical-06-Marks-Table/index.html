@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Result Table</title>
+</head>
+<body>
+
+    <h1 align="center">BCA Semester 1 &ndash; Result Sheet</h1>
+    <p align="center">Each subject is out of 100 marks. Maximum total = 500.</p>
+
+    <!-- Table attributes: border, cellpadding, cellspacing, width, align, bgcolor -->
+    <table border="2" cellpadding="10" cellspacing="0" width="92%" align="center">
+        <caption><b>Table: Semester 1 Marks of Students (2026&ndash;27)</b></caption>
+
+        <!-- Two header rows using rowspan and colspan -->
+        <thead bgcolor="#a7f3d0">
+            <tr>
+                <th rowspan="2">Roll No.</th>
+                <th rowspan="2">Student Name</th>
+                <th colspan="5" bgcolor="#6ee7b7">Subject Marks (out of 100)</th>
+                <th rowspan="2">Total<br>(500)</th>
+                <th rowspan="2">Percentage</th>
+                <th rowspan="2">Grade</th>
+            </tr>
+            <tr bgcolor="#d1fae5">
+                <th>Web Dev</th>
+                <th>Python</th>
+                <th>Comp. Fund.</th>
+                <th>Maths</th>
+                <th>Comm. Skills</th>
+            </tr>
+        </thead>
+
+        <tbody align="center">
+            <tr>
+                <td>101</td>
+                <td align="left">Meera Kothari</td>
+                <td>94</td>
+                <td>89</td>
+                <td>91</td>
+                <td>86</td>
+                <td>90</td>
+                <td><b>450</b></td>
+                <td>90.0%</td>
+                <td bgcolor="#a7f3d0"><b>A+</b></td>
+            </tr>
+            <tr>
+                <td>102</td>
+                <td align="left">Harsh Vaghela</td>
+                <td>81</td>
+                <td>76</td>
+                <td>79</td>
+                <td>84</td>
+                <td>78</td>
+                <td><b>398</b></td>
+                <td>79.6%</td>
+                <td bgcolor="#bbf7d0"><b>A</b></td>
+            </tr>
+            <tr>
+                <td>103</td>
+                <td align="left">Pooja Rana</td>
+                <td>68</td>
+                <td>72</td>
+                <td>61</td>
+                <td>66</td>
+                <td>70</td>
+                <td><b>337</b></td>
+                <td>67.4%</td>
+                <td bgcolor="#bae6fd"><b>B</b></td>
+            </tr>
+            <tr>
+                <td>104</td>
+                <td align="left">Nirav Solanki</td>
+                <td>52</td>
+                <td>47</td>
+                <td>55</td>
+                <td>49</td>
+                <td>58</td>
+                <td><b>261</b></td>
+                <td>52.2%</td>
+                <td bgcolor="#fde68a"><b>C</b></td>
+            </tr>
+            <tr>
+                <td>105</td>
+                <td align="left">Tanvi Dave</td>
+                <td>33</td>
+                <td>41</td>
+                <td>38</td>
+                <td>29</td>
+                <td>36</td>
+                <td><b>177</b></td>
+                <td>35.4%</td>
+                <td bgcolor="#fecaca"><b>F</b></td>
+            </tr>
+        </tbody>
+
+        <tfoot bgcolor="#d1fae5">
+            <tr>
+                <td colspan="10" align="center">
+                    <b>Grade Scale:</b>
+                    A+ (&ge; 85%) &nbsp;|&nbsp; A (75&ndash;84%) &nbsp;|&nbsp; B (60&ndash;74%) &nbsp;|&nbsp;
+                    C (40&ndash;59%) &nbsp;|&nbsp; F (&lt; 40%)
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+
+</body>
+</html>

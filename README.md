@@ -17,6 +17,11 @@ New practicals are added to this list as they are completed.
 | 5 | Multi-section Student Profile | [Practical-05-Student-Profile](Practical-05-Student-Profile/) | Sections, internal navigation links |
 | 6 | Student Marks Table | [Practical-06-Marks-Table](Practical-06-Marks-Table/) | Table, rowspan, colspan, caption, table attributes |
 | 7 | HTML5 Registration Form | [Practical-07-Registration-Form](Practical-07-Registration-Form/) | HTML5 input types, form controls |
+| 8 | Event Media Page | [Practical-08-Event-Media](Practical-08-Event-Media/) | Image, audio, video with controls |
+| 9 | Canvas and SVG | [Practical-09-Canvas-SVG](Practical-09-Canvas-SVG/) | Canvas shapes and text, SVG logo |
+| 10 | Geolocation and iframe | [Practical-10-Geolocation-Iframe](Practical-10-Geolocation-Iframe/) | HTML5 Geolocation API, iframe map |
+| 11 | Student Profile with CSS | [Practical-11-Profile-With-CSS](Practical-11-Profile-With-CSS/) | External, internal and inline CSS |
+| 12 | Admission Form with CSS | [Practical-12-Admission-Form-CSS](Practical-12-Admission-Form-CSS/) | Box model, selectors, text effects |
 
 ## Technologies
 HTML5, CSS3, Bootstrap 5, JavaScript

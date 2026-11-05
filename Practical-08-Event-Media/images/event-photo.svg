@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="340" viewBox="0 0 600 340">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1e1b4b"/>
+      <stop offset="1" stop-color="#9d174d"/>
+    </linearGradient>
+    <radialGradient id="spot" cx="0.5" cy="0.2" r="0.6">
+      <stop offset="0" stop-color="#fde047" stop-opacity="0.7"/>
+      <stop offset="1" stop-color="#fde047" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="600" height="340" fill="url(#sky)"/>
+  <rect width="600" height="340" fill="url(#spot)"/>
+  <!-- string lights -->
+  <path d="M0 40 Q150 80 300 40 T600 40" stroke="#fef3c7" stroke-width="2" fill="none"/>
+  <g fill="#fde047">
+    <circle cx="60" cy="52" r="5"/><circle cx="140" cy="62" r="5"/><circle cx="220" cy="55" r="5"/>
+    <circle cx="380" cy="55" r="5"/><circle cx="460" cy="62" r="5"/><circle cx="540" cy="52" r="5"/>
+  </g>
+  <!-- stage -->
+  <rect x="0" y="265" width="600" height="75" fill="#4a044e"/>
+  <rect x="0" y="260" width="600" height="8" fill="#fde047"/>
+  <!-- dancers -->
+  <g fill="#0f0a1e">
+    <circle cx="160" cy="175" r="15"/><path d="M160 190 L135 260 L185 260 Z"/>
+    <circle cx="240" cy="168" r="15"/><path d="M240 183 L215 260 L265 260 Z"/>
+    <circle cx="360" cy="168" r="15"/><path d="M360 183 L335 260 L385 260 Z"/>
+    <circle cx="440" cy="175" r="15"/><path d="M440 190 L415 260 L465 260 Z"/>
+  </g>
+  <text x="300" y="120" font-family="Arial" font-size="36" font-weight="bold" text-anchor="middle" fill="#fde047">Rang Utsav 2026</text>
+  <text x="300" y="315" font-family="Arial" font-size="14" text-anchor="middle" fill="#f5d0fe">Replace with a real event photo</text>
+</svg>

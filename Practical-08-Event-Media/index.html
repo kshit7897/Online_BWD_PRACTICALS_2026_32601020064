@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rang Utsav 2026 - Event Media</title>
+</head>
+<body>
+
+    <header>
+        <h1>Rang Utsav 2026</h1>
+        <p><i>Annual Cultural Fest &bull; Faculty of Computer Applications, Marwadi University</i></p>
+    </header>
+
+    <main>
+        <!-- Event photograph -->
+        <section>
+            <h2>Event Photograph</h2>
+            <figure>
+                <img src="images/event-photo.svg" alt="Students performing a group dance on stage at Rang Utsav" width="600" height="340">
+                <figcaption>Group dance performance at Rang Utsav 2026</figcaption>
+            </figure>
+        </section>
+
+        <!-- Promotional audio -->
+        <section>
+            <h2>Promotional Audio</h2>
+            <p>Listen to the official Rang Utsav announcement:</p>
+            <!--
+                controls : shows play / pause / volume / seek bar
+                preload  : browser loads only metadata (duration) at first
+                The browser tries each <source> in order. Put your own file in media/promo.mp3;
+                if it is missing, the online sample file is used.
+            -->
+            <audio controls preload="metadata">
+                <source src="media/promo.mp3" type="audio/mpeg">
+                <source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg">
+                <source src="https://www.w3schools.com/html/horse.ogg" type="audio/ogg">
+                Your browser does not support the audio element.
+            </audio>
+        </section>
+
+        <!-- Event video -->
+        <section>
+            <h2>Event Video</h2>
+            <p>Watch the highlights of the fest:</p>
+            <!--
+                controls : play / pause / volume / fullscreen buttons
+                poster   : image shown before the video starts
+                width    : size of the video player
+            -->
+            <video width="600" controls poster="images/event-photo.svg" preload="metadata">
+                <source src="media/event-video.mp4" type="video/mp4">
+                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                <source src="https://www.w3schools.com/html/mov_bbb.ogg" type="video/ogg">
+                Your browser does not support the video tag.
+            </video>
+        </section>
+
+        <section>
+            <h2>Event Details</h2>
+            <ul>
+                <li><b>Date:</b> 12<sup>th</sup> December 2026</li>
+                <li><b>Time:</b> 4:30 PM onwards</li>
+                <li><b>Venue:</b> Open Air Theatre, Marwadi University</li>
+                <li><b>Events:</b> Garba, Solo Singing, Skit, Ramp Walk, Prize Distribution</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p><small>&copy; 2026 Rang Utsav Committee, FCA</small></p>
+    </footer>
+
+</body>
+</html>

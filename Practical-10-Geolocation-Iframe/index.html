@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Information - Location</title>
+</head>
+<body>
+
+    <h1>Marwadi University</h1>
+    <p>
+        Marwadi University is located on Rajkot&ndash;Morbi Road, Rajkot, Gujarat.
+        It offers courses in Engineering, Computer Applications, Management, Science and more.
+    </p>
+
+    <!-- HTML5 Geolocation -->
+    <h2>Find Your Location</h2>
+    <p>Click the button to see your current location and the distance to the college.</p>
+    <button onclick="getLocation()">Get My Location</button>
+    <p id="result">Your location will appear here.</p>
+
+    <!-- iframe with map -->
+    <h2>College Location on Map</h2>
+    <iframe id="mapFrame"
+            src="https://maps.google.com/maps?q=Marwadi%20University%20Rajkot&amp;z=15&amp;output=embed"
+            width="600" height="400" loading="lazy" title="Map of Marwadi University">
+    </iframe>
+
+    <!-- iframe with another webpage -->
+    <h2>Courses Offered (another page inside iframe)</h2>
+    <iframe src="courses.html" width="600" height="260" title="Courses offered"></iframe>
+    <p><small>Note: many big websites (like Google or Facebook) block being shown inside an iframe for security reasons.</small></p>
+
+    <h2>Purpose of Using an iframe</h2>
+    <ul>
+        <li>An <code>&lt;iframe&gt;</code> (inline frame) is used to <b>embed another webpage inside the current webpage</b>.</li>
+        <li>Here it is used to show a <b>Google Map</b> of the college, so visitors can see the location without leaving our site.</li>
+        <li>It can also embed YouTube videos, forms, documents or other websites.</li>
+        <li>Important attributes: <code>src</code>, <code>width</code>, <code>height</code>, <code>title</code>, <code>loading="lazy"</code>, <code>allowfullscreen</code>.</li>
+        <li>Content inside the iframe is loaded separately, so it does not affect our page's code.</li>
+    </ul>
+
+    <script>
+        // College coordinates (approximate)
+        const collegeLat = 22.3666;
+        const collegeLon = 70.7960;
+
+        function getLocation() {
+            const result = document.getElementById("result");
+
+            if (navigator.geolocation) {
+                result.innerHTML = "Finding your location...";
+                navigator.geolocation.getCurrentPosition(showPosition, showError);
+            } else {
+                result.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+
+        function showPosition(position) {
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+            const distance = getDistance(lat, lon, collegeLat, collegeLon);
+
+            document.getElementById("result").innerHTML =
+                "<b>Latitude:</b> " + lat.toFixed(4) +
+                "<br><b>Longitude:</b> " + lon.toFixed(4) +
+                "<br><b>Accuracy:</b> " + Math.round(position.coords.accuracy) + " meters" +
+                "<br><b>Distance to college:</b> " + distance.toFixed(2) + " km";
+
+            // Show the user's location in the map iframe
+            document.getElementById("mapFrame").src =
+                "https://maps.google.com/maps?q=" + lat + "," + lon + "&z=14&output=embed";
+        }
+
+        function showError(error) {
+            let message;
+            switch (error.code) {
+                case error.PERMISSION_DENIED:
+                    message = "You denied the request for Geolocation.";
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    message = "Location information is unavailable.";
+                    break;
+                case error.TIMEOUT:
+                    message = "The request to get your location timed out.";
+                    break;
+                default:
+                    message = "An unknown error occurred.";
+            }
+            document.getElementById("result").innerHTML = message;
+        }
+
+        // Haversine formula: distance between two points on Earth in km
+        function getDistance(lat1, lon1, lat2, lon2) {
+            const R = 6371;
+            const dLat = (lat2 - lat1) * Math.PI / 180;
+            const dLon = (lon2 - lon1) * Math.PI / 180;
+            const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                      Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+                      Math.sin(dLon / 2) * Math.sin(dLon / 2);
+            return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        }
+    </script>
+
+</body>
+</html>

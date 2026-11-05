@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admission Form 2026-27</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="form-container">
+
+        <!-- Left information panel -->
+        <aside class="side-panel">
+            <h1>Admission Form</h1>
+            <p class="subtitle">Marwadi University &bull; 2026&ndash;27</p>
+            <ul class="steps">
+                <li>Fill in your personal details</li>
+                <li>Choose your course</li>
+                <li>Add your address</li>
+                <li>Submit the application</li>
+            </ul>
+            <p class="help">Need help? Call <b>+91 99999 99999</b></p>
+        </aside>
+
+        <!-- Right form area -->
+        <form action="#" method="post" class="form-area">
+
+            <fieldset>
+                <legend>Personal Information</legend>
+
+                <div class="row">
+                    <div class="field">
+                        <label for="fname">First Name <span class="req">*</span></label>
+                        <input type="text" id="fname" name="fname" placeholder="First name" required>
+                    </div>
+                    <div class="field">
+                        <label for="lname">Last Name <span class="req">*</span></label>
+                        <input type="text" id="lname" name="lname" placeholder="Surname" required>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="field">
+                        <label for="email">Email <span class="req">*</span></label>
+                        <input type="email" id="email" name="email" placeholder="name@gmail.com" required>
+                    </div>
+                    <div class="field">
+                        <label for="phone">Mobile <span class="req">*</span></label>
+                        <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="10 digit number" required>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="field">
+                        <label for="dob">Date of Birth</label>
+                        <input type="date" id="dob" name="dob">
+                    </div>
+                    <div class="field">
+                        <span class="label">Gender</span>
+                        <div class="options">
+                            <label><input type="radio" name="gender" value="male"> Male</label>
+                            <label><input type="radio" name="gender" value="female"> Female</label>
+                            <label><input type="radio" name="gender" value="other"> Other</label>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Academic Information</legend>
+
+                <div class="row">
+                    <div class="field">
+                        <label for="course">Course Applying For <span class="req">*</span></label>
+                        <select id="course" name="course" required>
+                            <option value="">-- Select --</option>
+                            <option>BCA</option>
+                            <option>BCA - Online</option>
+                            <option>B.Sc. IT</option>
+                            <option>MCA</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label for="percent">12<sup>th</sup> Percentage</label>
+                        <input type="number" id="percent" name="percent" min="0" max="100" step="0.01" placeholder="e.g. 81.25">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label for="school">Previous School / College</label>
+                    <input type="text" id="school" name="school" placeholder="Name of school">
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Address</legend>
+                <div class="field">
+                    <label for="address">Full Address</label>
+                    <textarea id="address" name="address" rows="3" placeholder="House no, street, city, PIN"></textarea>
+                </div>
+            </fieldset>
+
+            <div class="agree">
+                <label><input type="checkbox" required> I declare that the information given is correct.</label>
+            </div>
+
+            <div class="buttons">
+                <input type="submit" value="Submit Application">
+                <input type="reset" value="Clear Form">
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>

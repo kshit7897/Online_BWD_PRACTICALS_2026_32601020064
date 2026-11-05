@@ -1,0 +1,267 @@
+/* ===== Admission Form Styling ===== */
+
+/* Universal selector: include padding and border inside width (box model) */
+* {
+    box-sizing: border-box;
+}
+
+/* Element selector */
+body {
+    margin: 0;
+    padding: 40px 15px;
+    font-family: "Poppins", Arial, sans-serif;
+    background-color: #fff1f2;
+    background-image: radial-gradient(#fecdd3 1.5px, transparent 1.5px);
+    background-size: 22px 22px;
+    min-height: 100vh;
+}
+
+/* Class selector + CSS box model
+   content -> padding -> border -> margin */
+.form-container {
+    display: flex;
+    max-width: 980px;
+    margin: 0 auto;              /* margin: centers the box */
+    border: 2px solid #fecdd3;   /* border */
+    border-radius: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 15px 35px rgba(190, 18, 60, 0.15);
+    overflow: hidden;
+}
+
+/* Left panel */
+.side-panel {
+    flex: 0 0 280px;
+    padding: 40px 30px;          /* padding: space inside the border */
+    color: #ffffff;
+    background: linear-gradient(160deg, #be123c, #f43f5e);
+}
+
+/* Text effects */
+h1 {
+    margin: 0;
+    font-size: 32px;
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.18);
+}
+
+.subtitle {
+    margin: 8px 0 30px;
+    font-style: italic;
+    opacity: 0.9;
+    word-spacing: 3px;
+}
+
+/* Numbered steps using a CSS counter */
+.steps {
+    list-style: none;
+    padding: 0;
+    counter-reset: step;
+}
+
+.steps li {
+    margin-bottom: 16px;
+    counter-increment: step;
+}
+
+.steps li::before {                 /* pseudo-element */
+    content: counter(step);
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    margin-right: 10px;
+    line-height: 28px;
+    text-align: center;
+    font-weight: bold;
+    color: #be123c;
+    background-color: #ffffff;
+    border-radius: 50%;
+}
+
+.help {
+    margin-top: 40px;
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+/* Right side form */
+.form-area {
+    flex: 1;
+    padding: 30px 35px;
+}
+
+/* Fieldset and legend */
+fieldset {
+    margin: 0 0 20px;
+    padding: 12px 18px 4px;
+    border: none;
+    border-left: 4px solid #fb7185;
+    background-color: #fff7f8;
+    border-radius: 0 10px 10px 0;
+}
+
+legend {
+    padding: 0 6px;
+    font-size: 17px;
+    font-weight: bold;
+    color: #be123c;
+}
+
+/* Two-column rows */
+.row {
+    display: flex;
+    gap: 18px;
+}
+
+.row .field {           /* descendant selector */
+    flex: 1;
+}
+
+.field {
+    margin-bottom: 14px;
+}
+
+/* Label styling */
+label,
+.label {                /* grouping selector */
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #4c0519;
+}
+
+.req {
+    color: #e11d48;
+}
+
+/* Attribute selectors for different input types */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+input[type="number"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px 4px;
+    font-size: 15px;
+    font-family: inherit;
+    border: none;
+    border-bottom: 2px solid #fda4af;   /* underline style inputs */
+    background-color: transparent;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+textarea {
+    resize: vertical;
+}
+
+/* Pseudo-class: focus */
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-bottom-color: #be123c;
+    background-color: #ffffff;
+}
+
+/* Pseudo-element: placeholder */
+::placeholder {
+    color: #d4a5ae;
+}
+
+/* Pseudo-class: invalid (only after user typed something) */
+input[placeholder]:not(:placeholder-shown):invalid {
+    border-bottom-color: #f97316;
+}
+
+/* Pseudo-class: valid */
+input[placeholder]:not(:placeholder-shown):valid {
+    border-bottom-color: #16a34a;
+}
+
+/* Radio options in one line - child selector */
+.options > label {
+    display: inline-block;
+    margin-right: 15px;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    accent-color: #e11d48;
+    transform: scale(1.15);
+    margin-right: 5px;
+}
+
+.agree label {
+    font-weight: normal;
+}
+
+/* Buttons */
+.buttons {
+    margin-top: 15px;
+}
+
+input[type="submit"],
+input[type="reset"] {
+    margin: 5px 8px 5px 0;
+    padding: 12px 28px;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: inherit;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.3s;
+}
+
+input[type="submit"] {
+    color: #fff;
+    background-color: #e11d48;
+    border: 2px solid #e11d48;
+}
+
+input[type="reset"] {
+    color: #4c0519;
+    background-color: #ffffff;
+    border: 2px solid #fecdd3;
+}
+
+/* Pseudo-class: hover */
+input[type="submit"]:hover {
+    box-shadow: 0 6px 14px rgba(225, 29, 72, 0.35);
+    transform: translateY(-2px);
+}
+
+input[type="reset"]:hover {
+    background-color: #fff1f2;
+}
+
+/* Small screens: stack the panels and columns */
+@media (max-width: 760px) {
+    .form-container {
+        flex-direction: column;
+    }
+
+    .side-panel {
+        flex-basis: auto;
+        padding: 25px;
+    }
+
+    .form-area {
+        padding: 20px;
+    }
+
+    .row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+}

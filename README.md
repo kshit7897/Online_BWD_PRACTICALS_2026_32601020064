@@ -22,6 +22,10 @@ New practicals are added to this list as they are completed.
 | 10 | Geolocation and iframe | [Practical-10-Geolocation-Iframe](Practical-10-Geolocation-Iframe/) | HTML5 Geolocation API, iframe map |
 | 11 | Student Profile with CSS | [Practical-11-Profile-With-CSS](Practical-11-Profile-With-CSS/) | External, internal and inline CSS |
 | 12 | Admission Form with CSS | [Practical-12-Admission-Form-CSS](Practical-12-Admission-Form-CSS/) | Box model, selectors, text effects |
+| 13 | Responsive College Page | [Practical-13-Bootstrap-College](Practical-13-Bootstrap-College/) | Bootstrap navbar and grid |
+| 14 | Restaurant Menu | [Practical-14-Restaurant-Menu](Practical-14-Restaurant-Menu/) | Bootstrap cards, gradients, text effects |
+| 15 | Product Page | [Practical-15-Product-Page](Practical-15-Product-Page/) | Pseudo-classes, pseudo-elements, animations |
+| 16 | Marks Calculator (JS) | [Practical-16-JS-Marks-Calculator](Practical-16-JS-Marks-Calculator/) | Variables, operators, if-else, functions |
 
 ## Technologies
 HTML5, CSS3, Bootstrap 5, JavaScript
@@ -31,3 +35,6 @@ HTML5, CSS3, Bootstrap 5, JavaScript
 2. Open any practical folder.
 3. Open `index.html` in a browser (Chrome, Edge or Firefox).
 
+
+> Practical 13 and 14 load Bootstrap from a CDN, so they need an internet connection.
+> Practical 10 (Geolocation) asks for location permission in the browser.

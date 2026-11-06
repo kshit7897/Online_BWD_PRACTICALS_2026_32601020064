@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marks Calculator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="page-header">
+        <h1>&#127891; Result Calculator</h1>
+        <p>Enter marks (out of 100) of all five subjects to get total, percentage and grade</p>
+    </header>
+
+    <main class="wrapper">
+
+        <!-- Left: input form -->
+        <section class="card form-card">
+            <h2>Subject Marks</h2>
+
+            <div class="field">
+                <label for="name">Student Name</label>
+                <input type="text" id="name" placeholder="Enter student name">
+            </div>
+
+            <div class="subject">
+                <label for="m1"><span class="dot c1"></span>Web Development</label>
+                <div class="mark-input"><input type="number" id="m1" min="0" max="100" placeholder="0"><span>/ 100</span></div>
+            </div>
+            <div class="subject">
+                <label for="m2"><span class="dot c2"></span>Python Programming</label>
+                <div class="mark-input"><input type="number" id="m2" min="0" max="100" placeholder="0"><span>/ 100</span></div>
+            </div>
+            <div class="subject">
+                <label for="m3"><span class="dot c3"></span>Computer Fundamentals</label>
+                <div class="mark-input"><input type="number" id="m3" min="0" max="100" placeholder="0"><span>/ 100</span></div>
+            </div>
+            <div class="subject">
+                <label for="m4"><span class="dot c4"></span>Discrete Mathematics</label>
+                <div class="mark-input"><input type="number" id="m4" min="0" max="100" placeholder="0"><span>/ 100</span></div>
+            </div>
+            <div class="subject">
+                <label for="m5"><span class="dot c5"></span>Communication Skills</label>
+                <div class="mark-input"><input type="number" id="m5" min="0" max="100" placeholder="0"><span>/ 100</span></div>
+            </div>
+
+            <p class="live">Total so far: <b id="liveTotal">0</b> / 500</p>
+            <p id="error" class="error"></p>
+
+            <div class="buttons">
+                <button class="btn primary" onclick="calculateResult()">Calculate Result</button>
+                <button class="btn ghost" onclick="resetForm()">Reset</button>
+            </div>
+        </section>
+
+        <!-- Right: result -->
+        <section class="card result-card" id="resultCard">
+            <div id="placeholder" class="placeholder">
+                <div class="placeholder-icon">&#128202;</div>
+                <p>Your result will appear here after you click <b>Calculate Result</b>.</p>
+            </div>
+
+            <div id="result" class="hidden">
+                <h2 id="resName">Result</h2>
+
+                <div class="summary">
+                    <div class="ring" id="ring">
+                        <div class="ring-inner">
+                            <span id="resPercent">0%</span>
+                            <small>Percentage</small>
+                        </div>
+                    </div>
+
+                    <div class="summary-info">
+                        <div class="info-row"><span>Total Marks</span><b id="resTotal">0 / 500</b></div>
+                        <div class="info-row"><span>Grade</span><b class="grade" id="resGrade">-</b></div>
+                        <div class="info-row"><span>Status</span><b class="status" id="resStatus">-</b></div>
+                    </div>
+                </div>
+
+                <p class="remark" id="resRemark"></p>
+
+                <h3>Subject-wise Marks</h3>
+                <div id="bars"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="page-footer">
+        Grade scale: A+ &ge; 85% &bull; A &ge; 75% &bull; B &ge; 60% &bull; C &ge; 50% &bull; D &ge; 35% &bull; F &lt; 35% (or below 35 in any subject)
+    </footer>
+
+    <script>
+        // Constant variables
+        const TOTAL_SUBJECTS = 5;
+        const MAX_MARKS = 100;
+        const PASSING_MARKS = 35;
+        const SUBJECT_NAMES = ["Web Development", "Python Programming", "Computer Fundamentals",
+                               "Discrete Mathematics", "Communication Skills"];
+
+        // Function: reads marks, calculates total, percentage and grade
+        function calculateResult() {
+            let name = document.getElementById("name").value.trim();
+            let marks = [];
+            let total = 0;
+            let failedInAny = false;
+
+            document.getElementById("error").innerHTML = "";
+
+            if (name === "") {
+                document.getElementById("error").innerHTML = "Please enter student name.";
+                return;
+            }
+
+            // Read marks of all subjects using a loop
+            for (let i = 1; i <= TOTAL_SUBJECTS; i++) {
+                let value = document.getElementById("m" + i).value;
+                let mark = parseFloat(value);
+
+                // Validation using logical operators
+                if (value === "" || isNaN(mark) || mark < 0 || mark > MAX_MARKS) {
+                    document.getElementById("error").innerHTML =
+                        "Please enter valid marks (0 - 100) for " + SUBJECT_NAMES[i - 1] + ".";
+                    return;
+                }
+
+                marks.push(mark);
+                total = total + mark;              // arithmetic operator
+
+                if (mark < PASSING_MARKS) {        // comparison operator
+                    failedInAny = true;
+                }
+            }
+
+            let percentage = (total / (TOTAL_SUBJECTS * MAX_MARKS)) * 100;
+            let grade = getGrade(percentage, failedInAny);
+            let status = (grade === "F") ? "FAIL" : "PASS";   // ternary operator
+
+            showResult(name, marks, total, percentage, grade, status);
+        }
+
+        // Function: returns grade using if...else if ladder
+        function getGrade(percentage, failedInAny) {
+            if (failedInAny) {
+                return "F";
+            } else if (percentage >= 85) {
+                return "A+";
+            } else if (percentage >= 75) {
+                return "A";
+            } else if (percentage >= 60) {
+                return "B";
+            } else if (percentage >= 50) {
+                return "C";
+            } else if (percentage >= 35) {
+                return "D";
+            } else {
+                return "F";
+            }
+        }
+
+        // Function: returns a colour for the grade
+        function getGradeColor(grade) {
+            switch (grade) {
+                case "A+": return "#16a34a";
+                case "A":  return "#22c55e";
+                case "B":  return "#3b82f6";
+                case "C":  return "#f59e0b";
+                case "D":  return "#f97316";
+                default:   return "#ef4444";
+            }
+        }
+
+        // Function: displays the result on the page
+        function showResult(name, marks, total, percentage, grade, status) {
+            let remark;
+
+            // switch statement for remark
+            switch (grade) {
+                case "A+": remark = "Outstanding performance! Keep it up."; break;
+                case "A":  remark = "Excellent work!"; break;
+                case "B":  remark = "Very good. A little more effort for an A."; break;
+                case "C":  remark = "Good, keep improving."; break;
+                case "D":  remark = "Passed, but needs more effort."; break;
+                default:   remark = "Failed. Please work harder and try again.";
+            }
+
+            let color = getGradeColor(grade);
+
+            document.getElementById("resName").textContent = "Result of " + name;
+            document.getElementById("resTotal").textContent = total + " / " + (TOTAL_SUBJECTS * MAX_MARKS);
+            document.getElementById("resPercent").textContent = percentage.toFixed(2) + "%";
+            document.getElementById("resRemark").textContent = remark;
+
+            let gradeEl = document.getElementById("resGrade");
+            gradeEl.textContent = grade;
+            gradeEl.style.backgroundColor = color;
+
+            let statusEl = document.getElementById("resStatus");
+            statusEl.textContent = status;
+            statusEl.className = "status " + (status === "PASS" ? "pass" : "fail");
+
+            // Circular progress ring using conic-gradient
+            document.getElementById("ring").style.background =
+                "conic-gradient(" + color + " " + (percentage * 3.6) + "deg, #e5e7eb 0deg)";
+
+            // Subject-wise progress bars (loop over the marks array)
+            let barsHtml = "";
+            for (let i = 0; i < marks.length; i++) {
+                let failClass = marks[i] < PASSING_MARKS ? " low" : "";
+                barsHtml +=
+                    '<div class="bar-row">' +
+                    '  <div class="bar-label"><span>' + SUBJECT_NAMES[i] + '</span><b>' + marks[i] + '</b></div>' +
+                    '  <div class="bar"><div class="bar-fill c' + (i + 1) + failClass + '" style="width:' + marks[i] + '%"></div></div>' +
+                    '</div>';
+            }
+            document.getElementById("bars").innerHTML = barsHtml;
+
+            document.getElementById("placeholder").classList.add("hidden");
+            document.getElementById("result").classList.remove("hidden");
+        }
+
+        // Function: shows running total while typing (input event)
+        function updateLiveTotal() {
+            let sum = 0;
+            for (let i = 1; i <= TOTAL_SUBJECTS; i++) {
+                let mark = parseFloat(document.getElementById("m" + i).value);
+                if (!isNaN(mark)) {
+                    sum += mark;
+                }
+            }
+            document.getElementById("liveTotal").textContent = sum;
+        }
+
+        function resetForm() {
+            document.getElementById("name").value = "";
+            for (let i = 1; i <= TOTAL_SUBJECTS; i++) {
+                document.getElementById("m" + i).value = "";
+            }
+            document.getElementById("error").innerHTML = "";
+            document.getElementById("liveTotal").textContent = "0";
+            document.getElementById("result").classList.add("hidden");
+            document.getElementById("placeholder").classList.remove("hidden");
+        }
+
+        for (let i = 1; i <= TOTAL_SUBJECTS; i++) {
+            document.getElementById("m" + i).addEventListener("input", updateLiveTotal);
+        }
+    </script>
+
+</body>
+</html>

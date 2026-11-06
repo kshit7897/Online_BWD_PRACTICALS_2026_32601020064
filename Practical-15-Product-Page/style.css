@@ -1,0 +1,365 @@
+/* ===== Product Page: pseudo-classes, pseudo-elements, transitions, animations ===== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Poppins", Arial, sans-serif;
+    background-color: #f5f3ff;
+    color: #222;
+}
+
+/* Pseudo-element: ::selection (text highlight colour) */
+::selection {
+    background-color: #7c3aed;
+    color: #fff;
+}
+
+/* ---------- Navigation styling ---------- */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 800;
+    color: #1f2937;
+    text-decoration: none;
+}
+
+/* ::before adds an icon before the logo text */
+.logo::before {
+    content: "\25C9  ";
+    color: #7c3aed;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links a {
+    position: relative;
+    margin-left: 25px;
+    padding: 5px 0;
+    color: #4b5563;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+/* ::after creates an animated underline */
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: #7c3aed;
+    transition: width 0.3s ease;
+}
+
+/* :hover pseudo-class */
+.nav-links a:hover,
+.nav-links a.active {
+    color: #111827;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+/* ---------- Hero with keyframe animation ---------- */
+.hero {
+    padding: 100px 20px;
+    text-align: center;
+    color: #fff;
+    background: linear-gradient(-45deg, #6d28d9, #7c3aed, #0d9488, #14b8a6);
+    background-size: 400% 400%;
+    animation: gradientMove 10s ease infinite;
+}
+
+@keyframes gradientMove {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.hero-title {
+    font-size: 56px;
+    animation: slideDown 1s ease-out;
+}
+
+.hero-text {
+    margin: 15px 0 30px;
+    font-size: 20px;
+    animation: fadeIn 2s ease-in;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-50px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #7c3aed;
+    border: 2px solid #7c3aed;
+    border-radius: 30px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, transform 0.2s;
+}
+
+.btn:hover {
+    background-color: #fff;
+    color: #7c3aed;
+    transform: scale(1.05);
+}
+
+/* :active pseudo-class (while clicking) */
+.btn:active {
+    transform: scale(0.95);
+}
+
+/* :focus pseudo-class (keyboard users) */
+.btn:focus-visible {
+    outline: 3px dashed #0d9488;
+    outline-offset: 3px;
+}
+
+/* ---------- Sections ---------- */
+.section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+.section-title {
+    margin-bottom: 40px;
+    text-align: center;
+    font-size: 34px;
+}
+
+/* ::after decorative line under titles */
+.section-title::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 4px;
+    margin: 10px auto 0;
+    background-color: #7c3aed;
+    border-radius: 2px;
+}
+
+/* ---------- Products with image manipulation ---------- */
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 25px;
+}
+
+.product {
+    position: relative;
+    padding: 20px;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Image manipulation: size, object-fit, border-radius, filter, transform */
+.product img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+    filter: sepia(60%) saturate(70%);
+    transition: filter 0.4s, transform 0.4s;
+}
+
+.product:hover img {
+    filter: grayscale(0%) brightness(1.05) drop-shadow(0 6px 8px rgba(0, 0, 0, 0.3));
+    transform: scale(1.06) rotate(2deg);
+}
+
+.product h3 {
+    margin: 15px 0 5px;
+}
+
+.price {
+    margin-bottom: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #7c3aed;
+}
+
+.price del {
+    font-size: 15px;
+    color: #999;
+}
+
+/* :nth-child pseudo-class: different border on alternate cards */
+.product:nth-child(odd) {
+    border-top: 4px solid #7c3aed;
+}
+
+.product:nth-child(even) {
+    border-top: 4px solid #0d9488;
+}
+
+/* Badge with pulse animation */
+.tag {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 2;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #0d9488;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50%      { opacity: 0.6; }
+}
+
+/* ---------- Features ---------- */
+.features {
+    background-color: #fff;
+    border-radius: 15px;
+}
+
+/* ::first-letter makes a drop-cap */
+.intro::first-letter {
+    float: left;
+    margin-right: 8px;
+    font-size: 52px;
+    line-height: 1;
+    font-weight: bold;
+    color: #7c3aed;
+}
+
+/* ::first-line */
+.intro::first-line {
+    font-weight: 600;
+}
+
+.intro {
+    max-width: 700px;
+    margin: 0 auto 30px;
+    line-height: 1.7;
+}
+
+.feature-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    list-style: none;
+}
+
+.feature-list li {
+    padding: 12px 20px;
+    background-color: #f5f3ff;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+/* ::before adds tick marks */
+.feature-list li::before {
+    content: "\2714  ";
+    color: #65a30d;
+    font-weight: bold;
+}
+
+.feature-list li:hover {
+    background-color: #ede9fe;
+}
+
+/* :first-child / :last-child */
+.feature-list li:first-child {
+    border-left: 4px solid #7c3aed;
+}
+
+.feature-list li:last-child {
+    border-right: 4px solid #7c3aed;
+}
+
+/* ---------- Footer ---------- */
+.footer {
+    padding: 20px;
+    text-align: center;
+    color: #c4b5fd;
+    background-color: #1e1b4b;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 600px) {
+    .navbar {
+        padding: 15px 20px;
+        justify-content: center;
+    }
+
+    .nav-links {
+        margin-top: 10px;
+    }
+
+    .nav-links a {
+        margin: 0 10px;
+    }
+
+    .hero-title {
+        font-size: 38px;
+    }
+}
+
+/* Hero button: white so it stands out on the violet background */
+.hero .btn {
+    color: #6d28d9;
+    background-color: #ffffff;
+    border-color: #ffffff;
+}
+
+.hero .btn:hover {
+    color: #ffffff;
+    background-color: transparent;
+}

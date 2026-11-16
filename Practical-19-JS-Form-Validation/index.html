@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration - Validation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>New Student Registration</h1>
+
+        <div id="successBox" class="success-box"></div>
+
+        <!-- novalidate: browser validation off, JavaScript validates instead -->
+        <form id="regForm" novalidate>
+
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" placeholder="e.g. Kavya Parmar">
+                <small class="msg" id="nameMsg"></small>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="e.g. kavya.parmar@gmail.com">
+                <small class="msg" id="emailMsg"></small>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Mobile Number</label>
+                <input type="tel" id="phone" placeholder="10 digit number" maxlength="10">
+                <small class="msg" id="phoneMsg"></small>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Min 8 chars, 1 uppercase, 1 number, 1 symbol">
+                <div class="strength"><div id="strengthBar"></div></div>
+                <small class="msg" id="passwordMsg"></small>
+            </div>
+
+            <div class="form-group">
+                <label for="confirm">Confirm Password</label>
+                <input type="password" id="confirm" placeholder="Re-enter password">
+                <small class="msg" id="confirmMsg"></small>
+            </div>
+
+            <div class="form-group">
+                <span class="label">Gender</span>
+                <div class="inline">
+                    <label><input type="radio" name="gender" value="Male"> Male</label>
+                    <label><input type="radio" name="gender" value="Female"> Female</label>
+                    <label><input type="radio" name="gender" value="Other"> Other</label>
+                </div>
+                <small class="msg" id="genderMsg"></small>
+            </div>
+
+            <div class="form-group">
+                <label for="dob">Date of Birth</label>
+                <input type="date" id="dob">
+                <small class="msg" id="dobMsg"></small>
+            </div>
+
+            <div class="form-group">
+                <label for="course">Course</label>
+                <select id="course">
+                    <option value="">-- Select Course --</option>
+                    <option>BCA</option>
+                    <option>B.Sc. IT</option>
+                    <option>BCA - Online</option>
+                    <option>MCA</option>
+                </select>
+                <small class="msg" id="courseMsg"></small>
+            </div>
+
+            <div class="form-group">
+                <span class="label">Hobbies (select at least one)</span>
+                <div class="inline">
+                    <label><input type="checkbox" name="hobby" value="Reading"> Reading</label>
+                    <label><input type="checkbox" name="hobby" value="Sports"> Sports</label>
+                    <label><input type="checkbox" name="hobby" value="Music"> Music</label>
+                    <label><input type="checkbox" name="hobby" value="Coding"> Coding</label>
+                </div>
+                <small class="msg" id="hobbyMsg"></small>
+            </div>
+
+            <div class="form-group">
+                <label><input type="checkbox" id="terms"> I accept the terms and conditions</label>
+                <small class="msg" id="termsMsg"></small>
+            </div>
+
+            <button type="submit">Register</button>
+            <button type="reset" class="secondary">Reset</button>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

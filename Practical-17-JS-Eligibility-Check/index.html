@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examination Eligibility Checker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: "Poppins", Arial, sans-serif;
+            background-color: #fff7ed;
+            background-image: linear-gradient(135deg, #fdba74 0 25%, transparent 25%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 30px 15px;
+            box-sizing: border-box;
+        }
+        .box {
+            max-width: 460px;
+            margin: auto;
+            padding: 30px;
+            background: #fff;
+            border: 2px solid #fed7aa;
+            border-radius: 4px 30px 4px 30px;
+            box-shadow: 10px 10px 0 #c2410c;
+        }
+        h1 { text-align: left; color: #9a3412; margin-top: 0; font-size: 24px; border-bottom: 3px solid #fb923c; padding-bottom: 8px; }
+        label { display: block; margin-top: 12px; font-weight: 600; color: #7c2d12; }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 2px solid #fed7aa;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            margin-top: 20px;
+            padding: 12px;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #fff;
+            background: linear-gradient(90deg, #ea580c, #f59e0b);
+            cursor: pointer;
+        }
+        .rules { font-size: 14px; color: #7c2d12; background: #ffedd5; padding: 10px 15px; border-left: 4px solid #ea580c; border-radius: 6px; }
+        input, button { font-family: inherit; }
+        input:focus { outline: none; border-color: #ea580c; }
+        button:hover { opacity: 0.9; }
+    </style>
+</head>
+<body>
+
+    <div class="box">
+        <h1>Examination Eligibility Checker</h1>
+
+        <div class="rules">
+            <b>Eligibility Rules:</b>
+            <ul>
+                <li>Age must be 17 years or more</li>
+                <li>Attendance must be at least 75%</li>
+                <li>Internal marks must be at least 40 (out of 100)</li>
+            </ul>
+        </div>
+
+        <label for="name">Student Name</label>
+        <input type="text" id="name" placeholder="Full name of student">
+
+        <label for="age">Age (years)</label>
+        <input type="number" id="age" placeholder="e.g. 18">
+
+        <label for="attendance">Attendance (%)</label>
+        <input type="number" id="attendance" placeholder="e.g. 80">
+
+        <label for="marks">Internal Marks (out of 100)</label>
+        <input type="number" id="marks" placeholder="e.g. 65">
+
+        <button onclick="checkEligibility()">Check Eligibility</button>
+    </div>
+
+    <script>
+        function checkEligibility() {
+            let name = document.getElementById("name").value.trim();
+            let age = parseInt(document.getElementById("age").value);
+            let attendance = parseFloat(document.getElementById("attendance").value);
+            let marks = parseFloat(document.getElementById("marks").value);
+
+            // Input validation
+            if (name === "") {
+                alert("Please enter the student's name.");
+                return;
+            }
+            if (isNaN(age) || age <= 0 || age > 100) {
+                alert("Please enter a valid age.");
+                return;
+            }
+            if (isNaN(attendance) || attendance < 0 || attendance > 100) {
+                alert("Attendance must be between 0 and 100.");
+                return;
+            }
+            if (isNaN(marks) || marks < 0 || marks > 100) {
+                alert("Marks must be between 0 and 100.");
+                return;
+            }
+
+            // Confirm dialog before checking
+            let ok = confirm("Check eligibility for " + name + "?\n\n" +
+                             "Age: " + age + "\nAttendance: " + attendance + "%\nMarks: " + marks);
+            if (!ok) {
+                return;
+            }
+
+            // Conditional statements: nested if...else
+            if (age >= 17 && attendance >= 75 && marks >= 40) {
+                alert("Congratulations " + name + "!\n\nYou are ELIGIBLE for the examination.");
+            } else {
+                let reasons = "";
+
+                if (age < 17) {
+                    reasons += "- Age is less than 17 years\n";
+                }
+                if (attendance < 75) {
+                    reasons += "- Attendance is below 75% (short by " + (75 - attendance).toFixed(1) + "%)\n";
+                }
+                if (marks < 40) {
+                    reasons += "- Internal marks are below 40\n";
+                }
+
+                alert("Sorry " + name + ", you are NOT ELIGIBLE for the examination.\n\nReason(s):\n" + reasons);
+
+                // Prompt dialog: special permission for low attendance
+                if (attendance >= 65 && attendance < 75 && age >= 17 && marks >= 40) {
+                    let reason = prompt("Your attendance is between 65% and 75%.\n" +
+                                        "Enter a medical reason to request special permission:");
+                    if (reason !== null && reason.trim() !== "") {
+                        alert("Your request has been sent to the HOD.\nReason: " + reason);
+                    }
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>

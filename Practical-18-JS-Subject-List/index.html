@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semester Subjects - Interactive</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: "Poppins", Arial, sans-serif;
+            background-color: #fffbeb;
+        }
+        header {
+            padding: 20px;
+            text-align: center;
+            color: #fff;
+            background: linear-gradient(90deg, #78350f, #b45309);
+        }
+        header h1 { margin: 0; }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 25px auto;
+            padding: 0 15px;
+        }
+        .left { flex: 1 1 280px; }
+        .right { flex: 2 1 400px; }
+        .panel {
+            padding: 20px;
+            background: #fff;
+            border-radius: 4px;
+            border-top: 4px solid #f59e0b;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        ul { list-style: none; padding: 0; margin: 0; }
+        li {
+            padding: 10px 12px;
+            margin-bottom: 6px;
+            border-radius: 6px;
+            background-color: #fef3c7;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        li.hover { background-color: #fde68a; }
+        li.selected { background-color: #92400e; color: #fff; }
+        .type {
+            float: right;
+            font-size: 12px;
+            padding: 2px 8px;
+            border-radius: 10px;
+            background-color: #fff;
+            color: #92400e;
+        }
+        #details h2 { margin-top: 0; color: #92400e; }
+        #details table { width: 100%; border-collapse: collapse; }
+        #details td { padding: 8px; border-bottom: 1px solid #eee; }
+        #details td:first-child { width: 35%; font-weight: bold; }
+        .hint { color: #888; }
+        #count { font-size: 14px; color: #555; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>BCA Semester 1 Subjects</h1>
+        <p>Click on a subject to see its details</p>
+    </header>
+
+    <div class="container">
+        <div class="left panel">
+            <input type="text" id="search" placeholder="Search subject...">
+            <select id="filter">
+                <option value="All">All Subjects</option>
+                <option value="Theory">Theory Only</option>
+                <option value="Practical">Practical Only</option>
+            </select>
+            <p id="count"></p>
+            <ul id="subjectList"></ul>
+        </div>
+
+        <div class="right panel" id="details">
+            <p class="hint">Select a subject from the list to view details.</p>
+        </div>
+    </div>
+
+    <script>
+        // Array of subject objects
+        const subjects = [
+            {
+                code: "C05BC0203", name: "Basics of Web Development", type: "Theory", credits: 4,
+                faculty: "Prof. N. M. Vyas",
+                topics: ["HTML5", "CSS3", "Bootstrap", "JavaScript", "Web Hosting"]
+            },
+            {
+                code: "C05BC0201", name: "Programming in Python", type: "Theory", credits: 4,
+                faculty: "Prof. S. P. Bhatt",
+                topics: ["Variables", "Loops", "Functions", "Lists", "File Handling"]
+            },
+            {
+                code: "C05BC0202", name: "Computer Fundamentals", type: "Theory", credits: 3,
+                faculty: "Prof. K. J. Rathod",
+                topics: ["Hardware", "Software", "Number System", "Memory", "Operating System"]
+            },
+            {
+                code: "C05BC0204", name: "Discrete Mathematics", type: "Theory", credits: 3,
+                faculty: "Dr. R. K. Trivedi",
+                topics: ["Sets", "Relations", "Logic", "Graph Theory"]
+            },
+            {
+                code: "C05BC0205", name: "Communication Skills", type: "Theory", credits: 2,
+                faculty: "Prof. H. D. Pandya",
+                topics: ["Grammar", "Presentation", "Email Writing", "Group Discussion"]
+            },
+            {
+                code: "C05BC0206", name: "Web Development Lab", type: "Practical", credits: 2,
+                faculty: "Prof. N. M. Vyas",
+                topics: ["20 Practicals", "GitHub Submission", "Mini Project"]
+            },
+            {
+                code: "C05BC0207", name: "Python Programming Lab", type: "Practical", credits: 2,
+                faculty: "Prof. S. P. Bhatt",
+                topics: ["Programs on loops", "Functions", "File handling"]
+            }
+        ];
+
+        const list = document.getElementById("subjectList");
+        const details = document.getElementById("details");
+        const search = document.getElementById("search");
+        const filter = document.getElementById("filter");
+        let selectedIndex = -1;
+
+        // Function: display the list of subjects (filtered)
+        function displaySubjects() {
+            const text = search.value.toLowerCase();
+            const type = filter.value;
+            list.innerHTML = "";
+            let shown = 0;
+
+            // Loop through the array
+            for (let i = 0; i < subjects.length; i++) {
+                const s = subjects[i];
+                const matchText = s.name.toLowerCase().includes(text);
+                const matchType = (type === "All" || s.type === type);
+
+                if (matchText && matchType) {
+                    const li = document.createElement("li");
+                    li.innerHTML = s.name + '<span class="type">' + s.type + "</span>";
+                    if (i === selectedIndex) {
+                        li.classList.add("selected");
+                    }
+
+                    // Events: click, mouseover, mouseout
+                    li.addEventListener("click", function () {
+                        showDetails(i);
+                    });
+                    li.addEventListener("mouseover", function () {
+                        li.classList.add("hover");
+                    });
+                    li.addEventListener("mouseout", function () {
+                        li.classList.remove("hover");
+                    });
+
+                    list.appendChild(li);
+                    shown++;
+                }
+            }
+
+            document.getElementById("count").textContent =
+                "Showing " + shown + " of " + subjects.length + " subjects | Total credits: " + totalCredits();
+        }
+
+        // Function: show details of selected subject
+        function showDetails(index) {
+            selectedIndex = index;
+            const s = subjects[index];
+
+            // Array methods: map() and join()
+            const topicItems = s.topics.map(function (t) {
+                return "<li style='background:#fffbeb;cursor:default'>" + t + "</li>";
+            }).join("");
+
+            details.innerHTML =
+                "<h2>" + s.name + "</h2>" +
+                "<table>" +
+                "<tr><td>Subject Code</td><td>" + s.code + "</td></tr>" +
+                "<tr><td>Type</td><td>" + s.type + "</td></tr>" +
+                "<tr><td>Credits</td><td>" + s.credits + "</td></tr>" +
+                "<tr><td>Faculty</td><td>" + s.faculty + "</td></tr>" +
+                "<tr><td>No. of Topics</td><td>" + s.topics.length + "</td></tr>" +
+                "</table>" +
+                "<h3>Topics</h3><ul>" + topicItems + "</ul>";
+
+            displaySubjects();
+        }
+
+        // Total credits using reduce()
+        function totalCredits() {
+            return subjects.reduce(function (sum, s) {
+                return sum + s.credits;
+            }, 0);
+        }
+
+        // Events on search box and dropdown
+        search.addEventListener("keyup", displaySubjects);
+        filter.addEventListener("change", displaySubjects);
+
+        // Page load event
+        window.addEventListener("load", displaySubjects);
+    </script>
+
+</body>
+</html>

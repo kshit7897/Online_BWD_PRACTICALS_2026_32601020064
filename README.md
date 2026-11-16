@@ -6,7 +6,7 @@
 **Enrollment No.:** 32601020064
 
 Each practical is in its own folder. Open the `index.html` file of any folder in a browser to see the output.
-New practicals are added to this list as they are completed.
+All 20 practicals are complete.
 
 | No. | Practical | Folder | Topics Used |
 |----|-----------|--------|-------------|
@@ -26,6 +26,10 @@ New practicals are added to this list as they are completed.
 | 14 | Restaurant Menu | [Practical-14-Restaurant-Menu](Practical-14-Restaurant-Menu/) | Bootstrap cards, gradients, text effects |
 | 15 | Product Page | [Practical-15-Product-Page](Practical-15-Product-Page/) | Pseudo-classes, pseudo-elements, animations |
 | 16 | Marks Calculator (JS) | [Practical-16-JS-Marks-Calculator](Practical-16-JS-Marks-Calculator/) | Variables, operators, if-else, functions |
+| 17 | Eligibility Checker (JS) | [Practical-17-JS-Eligibility-Check](Practical-17-JS-Eligibility-Check/) | Conditional statements, alert/confirm/prompt |
+| 18 | Subject List (JS) | [Practical-18-JS-Subject-List](Practical-18-JS-Subject-List/) | Arrays, functions, events |
+| 19 | Registration Validation (JS) | [Practical-19-JS-Form-Validation](Practical-19-JS-Form-Validation/) | Form validation, regex, events |
+| 20 | College Website (multi-page) | [Practical-20-College-Website](Practical-20-College-Website/) | HTML5, CSS3, Bootstrap, JS, deployment |
 
 ## Technologies
 HTML5, CSS3, Bootstrap 5, JavaScript
@@ -36,5 +40,5 @@ HTML5, CSS3, Bootstrap 5, JavaScript
 3. Open `index.html` in a browser (Chrome, Edge or Firefox).
 
 
-> Practical 13 and 14 load Bootstrap from a CDN, so they need an internet connection.
+> Practical 13, 14 and 20 load Bootstrap from a CDN, so they need an internet connection.
 > Practical 10 (Geolocation) asks for location permission in the browser.

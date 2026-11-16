@@ -1,0 +1,206 @@
+/* ===== Common styles for all pages ===== */
+
+:root {
+    --primary: #134e4a;
+    --primary-light: #0d9488;
+    --accent: #fb923c;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Poppins", Arial, sans-serif;
+    color: #333;
+}
+
+/* Navbar */
+.bg-primary-dark {
+    background-color: var(--primary);
+}
+
+.navbar .nav-link {
+    position: relative;
+}
+
+.navbar .nav-link.active {
+    color: var(--accent) !important;
+    font-weight: 600;
+}
+
+/* Home page hero */
+.hero {
+    padding: 110px 0;
+    background: linear-gradient(rgba(19, 78, 74, 0.85), rgba(13, 148, 136, 0.75)),
+                url("../images/campus.svg") center / cover no-repeat;
+}
+
+.hero h1 {
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Inner page header */
+.page-header {
+    padding: 60px 15px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+}
+
+/* Section headings with underline */
+.section-heading {
+    position: relative;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.section-heading::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 60px;
+    height: 4px;
+    background-color: var(--accent);
+    border-radius: 2px;
+}
+
+.text-center .section-heading::after,
+.section-heading.text-center::after {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Stats */
+.stat-box {
+    padding: 25px 10px;
+    background-color: #fff;
+    border-top: 4px solid var(--accent);
+    border-radius: 4px 20px 4px 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.stat-box h2 {
+    font-weight: 800;
+    color: var(--primary);
+}
+
+.stat-box h2::after {
+    content: "+";
+}
+
+/* Check list */
+.check-list {
+    list-style: none;
+    padding: 0;
+}
+
+.check-list li {
+    margin-bottom: 8px;
+}
+
+.check-list li::before {
+    content: "\2714";
+    margin-right: 10px;
+    color: #28a745;
+    font-weight: bold;
+}
+
+/* Cards */
+.card {
+    border: none;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12) !important;
+}
+
+.info-card {
+    padding: 25px;
+    background-color: #fff;
+    border-left: 5px solid var(--primary-light);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.info-card h3 {
+    color: var(--primary);
+}
+
+/* Faculty avatar */
+.avatar {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+    line-height: 80px;
+    font-size: 26px;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    border-radius: 20px;
+    transform: rotate(-6deg);
+}
+
+/* Gallery */
+.gallery-img {
+    width: 100%;
+    cursor: pointer;
+    transition: transform 0.3s, filter 0.3s;
+}
+
+.gallery-img:hover {
+    transform: scale(1.04);
+    filter: brightness(1.1);
+}
+
+/* Footer */
+.site-footer {
+    background-color: var(--primary);
+}
+
+/* Back to top button */
+.back-to-top {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    display: none;
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
+    color: #fff;
+    background-color: var(--primary-light);
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.back-to-top:hover {
+    background-color: var(--primary);
+}
+
+/* Theme colour for Bootstrap primary buttons */
+.btn-primary {
+    background-color: var(--primary-light);
+    border-color: var(--primary-light);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+.btn-outline-primary {
+    color: var(--primary-light);
+    border-color: var(--primary-light);
+}
+
+.btn-outline-primary:hover {
+    color: #fff;
+    background-color: var(--primary-light);
+    border-color: var(--primary-light);
+}
